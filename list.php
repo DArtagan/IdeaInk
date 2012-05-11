@@ -6,7 +6,7 @@
   $result = $dbh->query("SELECT * FROM thoughts");
 
   echo "<ul>";
-    while($row = dbh->fetchAll())
+    while($row = $dbh->fetchAll())
     {
       echo "<li><a href=\"http://worldwidewilly.net/projects/ideaink/index.php?ideaID=" . $row['ideaID'] . "\">";
       echo "#" . $row['ideaID'] . " - " . $row['Title'];
