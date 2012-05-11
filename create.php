@@ -1,5 +1,5 @@
 <?php
-  op_start();
+  ob_start();
 
   // Connect to server
   require_once "inc/database.php";
