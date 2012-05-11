@@ -1,6 +1,6 @@
 <?php
   // Connect to server
-  require "inc/database.php"
+  require_once "inc/database.php";
 
   // Insert the values
   if($dbh = open_db()) {
