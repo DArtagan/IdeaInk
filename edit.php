@@ -23,5 +23,4 @@
 		echo "<li>Thoughts:<br /><textarea name=\"Content\" rows=\"15\" cols=\"70\"></textarea></li>";
 		echo "<li><input type=\"submit\" value=\"Save Thought\"/></li></ul></form>";
 	}
-	mysql_close($con);
 ?>
