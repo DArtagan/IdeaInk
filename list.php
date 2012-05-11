@@ -3,10 +3,10 @@
   require_once "inc/database.php";
   $dbh = open_db();
   
-  $result = $dbh->query("SELECT * FROM thoughts");
+  $result = $dbh->query('SELECT * FROM thoughts');
 
   echo "<ul>";
-    while($row = $result->fetchAll())
+    while($row = $result->fetch())
     {
       echo "<li><a href=\"http://worldwidewilly.net/projects/ideaink/index.php?ideaID=" . $row['ideaID'] . "\">";
       echo "#" . $row['ideaID'] . " - " . $row['Title'];
