@@ -7,8 +7,9 @@
   // Insert the values
   if($dbh = open_db()) {
     try{
-      $stmt = $dbh->prepare("UPDATE thoughts SET Title = '$_POST[Title]', Tag = '$_POST[Tag]', Content = '$_POST[Content]' WHERE ideaID =" . $_GET["ideaID"]");
-      $stmt->execute(array(":title" => $_POST[Title], ":tag" => $_POST[Tag], ":content" => $_POST[Content]));
+      $q = "UPDATE thoughts SET Title = :title, Tag = :tag, Content = :content WHERE ideaID = :ideaID";
+      $stmt = $dbh->prepare($q);
+      $stmt->execute(array(":title" => $_POST[Title], ":tag" => $_POST[Tag], ":content" => $_POST[Content], ":ideaID" => $_GET["ideaID"]));
       $result = $dbh->lastInsertId();
 	    $url = "http://worldwidewilly.net/projects/ideaink/index.php?ideaID=" . $_GET["ideaID"];
 	header("Location: $url");
