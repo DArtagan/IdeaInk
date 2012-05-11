@@ -1,8 +1,9 @@
 <?php
   // Connect to database
   require_once "inc/database.php";
+  $dbh = open_db();
   
-  $result = mysql_query("SELECT * FROM thoughts");
+  $result = $dbh->query("SELECT * FROM thoughts");
 
   echo "<ul>";
   while($row = mysql_fetch_array($result))
