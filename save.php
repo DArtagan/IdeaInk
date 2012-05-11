@@ -1,5 +1,6 @@
 <?php
   ob_start();
+
   // Connect to database
   require_once "inc/database.php";
   
@@ -16,5 +17,6 @@
     }
   }
   echo $error;
-  ob_end_flush;
+
+  ob_end_flush();
 ?>
