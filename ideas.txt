@@ -1,0 +1,16 @@
+--- Ideas, Thoughts, Etc. ---
+
+Display and Edit/Create become same thing
+Creation Date
+Edit Date
+Copy/Backup Thought (Revert button, maybe keep three copies of each note)
+Share (Email, facebook, twitter, etc.)
+Allow tags within the note (<code></code>)
+Titles, allow duplicates or no? If no, and the user tries it, give the user several options (merge, open other).  Check the title in real time.
+Tags above thoughts box, or bellow?
+Search as you type search box
+Dialogs and such are "Humanized"
+Autosuggest tags
+Thoughts get their own url
+Do I have security breaches because of these forms? Sanitize and filter them
+Seperate User Accounts

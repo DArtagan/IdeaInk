@@ -1,0 +1,34 @@
+<?php
+	$con = mysql_pconnect("db2906.perfora.net","dbo364182075", "JC!KJg3Uyqz*");
+	if(!$con)
+	{
+		die('Could not connect: ' . mysql_error());
+	}
+
+	$db_selected = mysql_select_db("db364182075", $con);
+	if (!$db_selected) 
+	{
+	  die('Cannot use db364182075 : ' . mysql_error());
+	}
+	
+	if(!empty($_GET["ideaID"])) {
+		$theID = $_GET["ideaID"];
+		$q = "SELECT * FROM thoughts WHERE ideaID=" . $theID;
+		$result = mysql_query($q);
+		while($row = mysql_fetch_array($result)) {
+			echo "<form class=\"input\" action=\"save.php?ideaID=" . $theID . "\" method=\"post\"><ul>";
+			echo "<li>Title: <input type=\"text\" name=\"Title\" value=\"" . $row['Title'] . "\"/></li>";
+			echo "<li>Tags (seperate with commas): <input type=\"text\" name=\"Tag\" value=\"" . $row['Tag'] . "\"/></li>"; 
+			echo "<li>Thoughts:<br /><textarea name=\"Content\" rows=\"15\" cols=\"70\">" . $row['Content']. "</textarea></li>";
+			echo "<li><input type=\"submit\" value=\"Save Thought\"/></li></ul></form>";
+		}
+	}
+	else {
+		echo "<form class=\"input\" action=\"create.php\" method=\"post\"><ul>";
+		echo "<li>Title: <input type=\"text\" name=\"Title\" /></li>";
+		echo "<li>Tags (seperate with commas): <input type=\"text\" name=\"Tag\" /></li>"; 
+		echo "<li>Thoughts:<br /><textarea name=\"Content\" rows=\"15\" cols=\"70\"></textarea></li>";
+		echo "<li><input type=\"submit\" value=\"Save Thought\"/></li></ul></form>";
+	}
+	mysql_close($con);
+?>
