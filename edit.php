@@ -4,7 +4,7 @@
 
   $dbh = open_db();
   
-  if(!empty($theID = $_GET["ideaID"])) {
+  if(!empty($_GET["ideaID"])) {
     $theID = $_GET["ideaID"]
     $q = "SELECT * FROM thoughts WHERE ideaID=" . $theID; 
     $result = $dbh->query($q);
