@@ -1,4 +1,6 @@
 <?php
+  op_start();
+
   // Connect to server
   require_once "inc/database.php";
 
@@ -15,4 +17,6 @@
     }  
   }
   echo $error;
+
+  ob_end_flush();
 ?>
