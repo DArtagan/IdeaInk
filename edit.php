@@ -8,7 +8,7 @@
 		$theID = $_GET["ideaID"];
 		$q = "SELECT * FROM thoughts WHERE ideaID=" . $theID;
 		$result = $dbh->query($q);
-		while($row = mysql_fetch_array($result)) {
+                while($row = $result->fetchAll()) {
 			echo "<form class=\"input\" action=\"save.php?ideaID=" . $theID . "\" method=\"post\"><ul>";
 			echo "<li>Title: <input type=\"text\" name=\"Title\" value=\"" . $row['Title'] . "\"/></li>";
 			echo "<li>Tags (seperate with commas): <input type=\"text\" name=\"Tag\" value=\"" . $row['Tag'] . "\"/></li>"; 
