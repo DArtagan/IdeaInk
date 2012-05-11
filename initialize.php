@@ -3,8 +3,8 @@
 </head>
 <body>
 <?php
-  // Connect to server
-  require_once "includes/db.inc.php";
+  // Connect to database
+  require_once "inc/database.php";
   
   // Create Table
   $q="DROP table if exists thoughts";
