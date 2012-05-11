@@ -15,6 +15,4 @@
   echo "</ul>";
   
   echo "<br /><a href=\"http://worldwidewilly.net/projects/ideaink\">New Thought</a>";
-  
-mysql_close($con);
 ?> 

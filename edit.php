@@ -2,10 +2,12 @@
 	// Connect to database
   require_once "inc/database.php";
 	
+	$dbh = open_db();
+	
 	if(!empty($_GET["ideaID"])) {
 		$theID = $_GET["ideaID"];
 		$q = "SELECT * FROM thoughts WHERE ideaID=" . $theID;
-		$result = mysql_query($q);
+		$result = $dbh->query($q);
 		while($row = mysql_fetch_array($result)) {
 			echo "<form class=\"input\" action=\"save.php?ideaID=" . $theID . "\" method=\"post\"><ul>";
 			echo "<li>Title: <input type=\"text\" name=\"Title\" value=\"" . $row['Title'] . "\"/></li>";
