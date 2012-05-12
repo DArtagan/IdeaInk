@@ -8,9 +8,11 @@
   echo "<ul>";
     while($row = $result->fetch())
     {
-      echo "<li><a href=\"http://worldwidewilly.net/projects/ideaink/index.php?ideaID=" . $row['ideaID'] . "\">";
-      echo "#" . $row['ideaID'] . " - " . $row['Title'];
-      echo "</a></li>";
+      if($row['Deleted'] == 0) {
+        echo "<li><a href=\"http://worldwidewilly.net/projects/ideaink/index.php?ideaID=" . $row['ideaID'] . "\">";
+        echo "#" . $row['ideaID'] . " - " . $row['Title'];
+        echo "</a></li>";
+      }
     }
   echo "</ul>";
   
