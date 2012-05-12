@@ -14,7 +14,7 @@
         echo "<li>Tags (seperate with commas): <input type=\"text\" name=\"Tag\" value=\"" . $row['Tag'] . "\"/></li>"; 
         echo "<li>Thoughts:<br /><textarea name=\"Content\" rows=\"15\" cols=\"70\">" . $row['Content']. "</textarea></li>";
         echo "<li><input type=\"submit\" value=\"Forget Thought\" name=\"submitAction\" />";
-        echo "<li><input type=\"submit\" value=\"Save Thought\"/></li></ul></form>";
+        echo "<li><input type=\"submit\" value=\"Save Thought\" name=\"submitAction\" /></li></ul></form>";
     }
   } else {
     echo "<form class=\"input\" action=\"create.php\" method=\"post\"><ul>";

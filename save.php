@@ -7,7 +7,7 @@
   // Insert the values
   if($dbh = open_db()) {
     try{
-      if($submitAction == "Forget Thought") {
+      if($_POST["submitAction"] == "Forget Thought") {
         $q = "UPDATE thoughts SET Deleted = :deleted WHERE ideaID = :ideaID";
         $stmt = $dbh->prepare($q);
         $stmt->execute(array(":deleted" => 1, ":ideaID" => $_GET["ideaID"]));
