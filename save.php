@@ -12,7 +12,7 @@
         $stmt = $dbh->prepare($q);
         $stmt->execute(array(":deleted" => 1, ":ideaID" => $_GET["ideaID"]));
         $url = "http://worldwidewilly.net/projects/ideaink/index.php";
-        header("Location: $url);
+        header("Location: $url");
       } else {
         $q = "UPDATE thoughts SET Title = :title, Tag = :tag, Content = :content WHERE ideaID = :ideaID";
         $stmt = $dbh->prepare($q);
