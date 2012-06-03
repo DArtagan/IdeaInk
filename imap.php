@@ -1,6 +1,6 @@
 <?
   
-$mbox = imap_open("{imap.gmail.com:993}", "ideaink@weiskopf.me", "9bYQR#gq!ka4");
+$mbox = imap_open("{imap.gmail.com:993/imap/ssl}", "ideaink@weiskopf.me", "9bYQR#gq!ka4");
 
 echo "<h1>Mailboxes</h1>";
 
