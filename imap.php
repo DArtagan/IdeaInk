@@ -3,7 +3,7 @@
 $mbox = imap_open("{imap.gmail.com:993/imap/ssl}", "ideaink@weiskopf.me", "9bYQR#gq!ka4");
 
 echo "<h1>Mailboxes</h1>";
-$folders = imap_listmailbox($mbox, "{imap.gmail.com:993/imap/ssl}', '*');
+$folders = imap_listmailbox($mbox, '{imap.gmail.com:993/imap/ssl}', '*');
 
 if($folders == false) {
   echo '<p>Call Failed</p>';
