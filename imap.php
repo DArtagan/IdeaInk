@@ -19,7 +19,7 @@ if($headers == false) {
   echo '<p>Call failed</p>';
 } else {
   foreach($headers as $header) {
-    echo '<p>' . $header . '</p>;
+    echo '<p>' . $header . '</p>';
   }
 }
 
