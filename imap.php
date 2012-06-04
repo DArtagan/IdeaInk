@@ -51,14 +51,13 @@ if($dbh = open_db()) {
 
       makeThought($dbh, $header->subject, $tags, $body);
 
-      $sequence != '' ? $sequence .= $i . ',' : $sequence = $i;
+      imap_delete($mbox, $i);
     }
   } catch (PDOException $e) {
     $error = "Idea was not added: " . $e->getMessage();
   } 
 }
 
-imap_mail_copy($mbox, "$sequence", '[Gmail]/All Mail');
 imap_expunge($mbox);
 imap_close($mbox);
 ?>
