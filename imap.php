@@ -32,7 +32,7 @@ require_once "inc/database.php";
 
 if($dbh = open_db()) {
   try {
-    for($i = 1; $i  $count; $i++) {
+    for($i = 1; $i <= $count; $i++) {
       $header = imap_headerinfo($mbox, $i);
 
       $structure = imap_fetchstructure($mbox, $i);
