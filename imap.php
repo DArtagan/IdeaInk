@@ -29,6 +29,7 @@ $count = imap_num_msg($mbox);
 
 require_once "inc/make.php";
 require_once "inc/database.php";
+$sequence = '';
 
 if($dbh = open_db()) {
   try {
@@ -49,13 +50,15 @@ if($dbh = open_db()) {
       $tags = str_replace("::", "", $tags);
 
       makeThought($dbh, $header->subject, $tags, $body);
+
+      $sequence != '' ? $sequence .= $i . ',' : $sequence = $i;
     }
   } catch (PDOException $e) {
     $error = "Idea was not added: " . $e->getMessage();
   } 
 }
 
-imap_mail_copy($mbox, "1:$count", '[Gmail]/All Mail');
+imap_mail_copy($mbox, "$sequence", '[Gmail]/All Mail');
 imap_expunge($mbox);
 imap_close($mbox);
 ?>
