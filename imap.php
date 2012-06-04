@@ -27,16 +27,34 @@ if($headers == false) {
 
 $count = imap_num_msg($mbox);
 
-for($i = 1; $i  $count; $i++) {
-  $header = imap_headerinfo($mbox, $i);
-  $raw_body = imap_body($mbox, $i);
+require_once "inc/make.php";
+require_once "inc/database.php";
 
-  $
+if($dbh = open_db()) {
+  try {
+    for($i = 1; $i  $count; $i++) {
+      $header = imap_headerinfo($mbox, $i);
+
+      $structure = imap_fetchstructure($mbox, $i);
+      if(@structure->type == 1) {
+        $body = imap_fetchbody($mbox, $i, "1");
+      } else {
+        $body = imap_body($mbox, $i);
+      }
+      if(!$body) $body = "NO TEXT ENTERED";
+
+      $tags = strpbrk($body, '::');
+
+      $body = str_replace($tags, "", $body);
+
+      makeThought($dbh, $header->subject, $tags, $body);
+    }
+  } catch (PDOException $e) {
+    $error = "Idea was not added: " . $e->getMessage();
+  } 
 }
 
 imap_mail_copy($mbox, '1:$count', '[Gmail]/All Mail');
-
 imap_expunge($mbox);
-
 imap_close($mbox);
 ?>

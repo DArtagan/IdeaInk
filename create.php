@@ -18,7 +18,7 @@
         header("Location: $url");
       }
     } catch (PDOException $e) {
-     $error = "Idea was not added: " . $e->getMessage();
+      $error = "Idea was not added: " . $e->getMessage();
     }  
   }
   echo $error;
