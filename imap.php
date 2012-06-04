@@ -36,7 +36,7 @@ if($dbh = open_db()) {
       $header = imap_headerinfo($mbox, $i);
 
       $structure = imap_fetchstructure($mbox, $i);
-      if(@structure->type == 1) {
+      if($structure->type == 1) {
         $body = imap_fetchbody($mbox, $i, "1");
       } else {
         $body = imap_body($mbox, $i);
