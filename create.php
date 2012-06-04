@@ -12,7 +12,7 @@
         header("Location: $url");
       } else {
         require_once "inc/make.php";
-        makeThought($_POST[Title], $_POST[Tag], $_POST[Content]);
+        makeThought($dbh, $_POST[Title], $_POST[Tag], $_POST[Content]);
         $result = $dbh->lastInsertId();
 	$url = "http://worldwidewilly.net/projects/ideaink/index.php?ideaID=" . $result;
         header("Location: $url");
