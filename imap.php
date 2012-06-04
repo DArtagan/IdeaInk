@@ -46,6 +46,7 @@ if($dbh = open_db()) {
       $tags = strpbrk($body, '::');
 
       $body = str_replace($tags, "", $body);
+      $tags = str_replace("::", "", $tags);
 
       makeThought($dbh, $header->subject, $tags, $body);
     }
@@ -54,7 +55,7 @@ if($dbh = open_db()) {
   } 
 }
 
-imap_mail_copy($mbox, '1:$count', '[Gmail]/All Mail');
+imap_mail_copy($mbox, "1:$count", '[Gmail]/All Mail');
 imap_expunge($mbox);
 imap_close($mbox);
 ?>
