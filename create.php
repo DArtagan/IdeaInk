@@ -15,7 +15,8 @@
         makeThought($_POST[Title], $_POST[Tag], $_POST[Content]);
         $result = $dbh->lastInsertId();
 	$url = "http://worldwidewilly.net/projects/ideaink/index.php?ideaID=" . $result;
-	header("Location: $url");
+        header("Location: $url");
+      }
     } catch (PDOException $e) {
      $error = "Idea was not added: " . $e->getMessage();
     }  
