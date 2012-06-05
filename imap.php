@@ -1,5 +1,4 @@
 <?
-  
 $mbox = imap_open("{imap.gmail.com:993/imap/ssl}", "ideaink@weiskopf.me", "9bYQR#gq!ka4");
 
 $count = imap_num_msg($mbox);
@@ -22,7 +21,7 @@ if($dbh = open_db()) {
       if(!$body) $body = "NO TEXT ENTERED";
 
       $tags = preg_match("/^::.*?$/", $body, '::');
-      $alias = preg_match('/^@@(.*?)$/', $body, '@@');
+      $alias = preg_match('/^@@.*?$/', $body, '@@');
 
       $body = str_replace($tags, "", $body);
       $body = str_replace($alias, "", $body);
