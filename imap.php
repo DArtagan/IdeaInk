@@ -19,8 +19,9 @@ if($dbh = open_db()) {
         $body = imap_body($mbox, $i);
       }
       if(!$body) $body = "NO TEXT ENTERED";
-
-      $tags = preg_match('/^::.*?$/', $body, '::');
+      
+      $regex = '/^::.*?$/';
+      $tags = preg_match($regex, $body, '::');
       $alias = preg_match('/^@@.*?$/', $body, '@@');
 
       $body = str_replace($tags, "", $body);
