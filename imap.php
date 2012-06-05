@@ -1,29 +1,6 @@
 <?
   
 $mbox = imap_open("{imap.gmail.com:993/imap/ssl}", "ideaink@weiskopf.me", "9bYQR#gq!ka4");
-/*
-echo "<h1>Mailboxes</h1>";
-$folders = imap_listmailbox($mbox, '{imap.gmail.com:993/imap/ssl}', '*');
-
-if($folders == false) {
-  echo '<p>Call Failed</p>';
-} else {
-  foreach($folders as $folder) {
-    echo '<p>' . $folder . '</p>';
-  }
-}
-
-echo '<h1>Headers in INBOX</h1>';
-$headers = imap_headers($mbox);
-
-if($headers == false) {
-  echo '<p>Call failed</p>';
-} else {
-  foreach($headers as $header) {
-    echo '<p>' . $header . '</p>';
-  }
-}
-*/
 
 $count = imap_num_msg($mbox);
 
@@ -44,12 +21,17 @@ if($dbh = open_db()) {
       }
       if(!$body) $body = "NO TEXT ENTERED";
 
-      $tags = strpbrk($body, '::');
+      $tags = preg_match("/^::.*?$/", $body, '::');
+      $alias = preg_match('/^@@(.*?)$/', $body, '@@');
 
       $body = str_replace($tags, "", $body);
-      $tags = str_replace("::", "", $tags);
+      $body = str_replace($alias, "", $body);
 
-      makeThought($dbh, $header->subject, $tags, $body);
+      $tags = str_replace("::", "", $tags);
+      $alias = str_replace('@@', "", $alias);
+
+
+      makeThought($dbh, $header->subject, $alias, $tags, $body);
 
       imap_delete($mbox, $i);
     }
