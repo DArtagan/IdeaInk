@@ -20,7 +20,8 @@
   } else {
     echo "<form class=\"input\" action=\"create.php\" method=\"post\"><ul>";
       echo "<li>Title: <input type=\"text\" name=\"Title\" /></li>";
-      echo "<li>Tags (seperate with commas): <input type=\"text\" name=\"Tag\" /></li>"; 
+      echo "<li>Tags (seperate with commas): <input type=\"text\" name=\"Tag\" /></li>";
+      echo "<li>Alias (seperate with commas): <input type=\"text\" name=\"Alias\" /></li>"; 
       echo "<li>Thoughts:<br /><textarea name=\"Content\" rows=\"15\" cols=\"70\"></textarea></li>";
       echo "<li><input type=\"submit\" value=\"Forget Thought\" name=\"submitAction\" />";
       echo "<li><input type=\"submit\" value=\"Save Thought\"/></li></ul></form>";

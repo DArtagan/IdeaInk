@@ -14,9 +14,9 @@
         $url = "http://worldwidewilly.net/projects/ideaink/index.php";
         header("Location: $url");
       } else {
-        $q = "UPDATE thoughts SET Title = :title, Tag = :tag, Content = :content WHERE ideaID = :ideaID";
+        $q = "UPDATE thoughts SET Title = :title, Alias = :alias, Tag = :tag, Content = :content WHERE ideaID = :ideaID";
         $stmt = $dbh->prepare($q);
-        $stmt->execute(array(":title" => $_POST[Title], ":tag" => $_POST[Tag], ":content" => $_POST[Content], ":ideaID" => $_GET["ideaID"]));
+        $stmt->execute(array(":title" => $_POST[Title], ":alias" => $_POST[Alias], ":tag" => $_POST[Tag], ":content" => $_POST[Content], ":ideaID" => $_GET["ideaID"]));
         $result = $dbh->lastInsertId();
 	$url = "http://worldwidewilly.net/projects/ideaink/index.php?ideaID=" . $_GET["ideaID"];
         header("Location: $url");
