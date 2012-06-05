@@ -5,7 +5,6 @@ $count = imap_num_msg($mbox);
 
 require_once "inc/make.php";
 require_once "inc/database.php";
-$sequence = '';
 
 if($dbh = open_db()) {
   try {
@@ -18,17 +17,18 @@ if($dbh = open_db()) {
       } else {
         $body = imap_body($mbox, $i);
       }
-      if(!$body) $body = "NO TEXT ENTERED";
-      
-      $tags = preg_match('/^::.*?$/', $body, '::');
-      $alias = preg_match('/^@@.*?$/', $body, '@@');
+      if($body) {
+        preg_match('/^::.*?$/mi', $body, $matches);
+	$tags = $matches[0];
+      	$alias = preg_match('/^@@.*?$/mi', $body, $matches);
+        $alias = $matches[0];
 
-      $body = str_replace($tags, "", $body);
-      $body = str_replace($alias, "", $body);
+      	$body = str_replace($tags, "", $body);
+      	$body = str_replace($alias, "", $body);
 
-      $tags = str_replace("::", "", $tags);
-      $alias = str_replace('@@', "", $alias);
-
+      	$tags = str_replace("::", "", $tags);
+      	$alias = str_replace('@@', "", $alias);
+      }
 
       makeThought($dbh, $header->subject, $alias, $tags, $body);
 
