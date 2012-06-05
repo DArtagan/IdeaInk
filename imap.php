@@ -20,7 +20,7 @@ if($dbh = open_db()) {
       }
       if(!$body) $body = "NO TEXT ENTERED";
 
-      $tags = preg_match("/^::.*?$/", $body, '::');
+      $tags = preg_match('/^::.*?$/', $body, '::');
       $alias = preg_match('/^@@.*?$/', $body, '@@');
 
       $body = str_replace($tags, "", $body);
