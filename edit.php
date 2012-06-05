@@ -11,6 +11,7 @@
     while($row = $result->fetch()) {
       echo "<form class=\"input\" action=\"save.php?ideaID=" . $theID . "\" method=\"post\"><ul>";
         echo "<li>Title: <input type=\"text\" name=\"Title\" value=\"" . $row['Title'] . "\"/></li>";
+        echo "<li>Alias: <input type=\"text\" name=\"Alias\" value=\"" . $row['Alias'] . "\"/></li>;
         echo "<li>Tags (seperate with commas): <input type=\"text\" name=\"Tag\" value=\"" . $row['Tag'] . "\"/></li>"; 
         echo "<li>Thoughts:<br /><textarea name=\"Content\" rows=\"15\" cols=\"70\">" . $row['Content']. "</textarea></li>";
         echo "<li><input type=\"submit\" value=\"Forget Thought\" name=\"submitAction\" />";
